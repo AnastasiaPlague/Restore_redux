@@ -1,0 +1,28 @@
+.book-list-item {
+	justify-content: center;
+}
+
+.cover-image {
+	width: 120px;
+}
+
+.book-cover {
+	width: 28%;
+}
+
+.book-details {
+	width: 30%;
+}
+
+.book-title {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.book-author {
+	font-size: 0.7rem;
+}
+
+.book-price {
+	font-size: 1.2rem;
+}
