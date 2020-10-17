@@ -5,12 +5,11 @@ const BookListItem = ({ book }) => {
 	const { title, author, price, coverImage } = book;
 
 	return (
-		<div className="book-list-item d-flex container-sm">
-			<div className="book-cover mb-3">
+		<div className="book-list-item d-flex h-100 mb-5">
+			<div className="book-cover mb-3 mr-3">
 				<img className="cover-image img-fluid" src={coverImage} alt="cover" />
 			</div>
-			<div className="book-details mb-2 d-flex flex-column justify-content-around">
-				{" "}
+			<div className="book-details mb-2 w-50 d-flex flex-column justify-content-center">
 				<span className="book-title">{title}</span>
 				<div className="book-author">{author}</div>
 				<div className="book-price">${price}</div>

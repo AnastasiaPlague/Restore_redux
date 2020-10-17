@@ -9,7 +9,6 @@ import BookListItem from "../book-list-item/book-list-item";
 import "./book-list.css";
 
 class BookList extends Component {
-	state = {};
 	componentDidMount() {
 		const {
 			bookstoreService,
@@ -38,10 +37,10 @@ class BookList extends Component {
 			return <ErrorIndicator />;
 		}
 		return (
-			<ul className="book-list">
+			<ul className="book-list p-0 row">
 				{books.map(book => {
 					return (
-						<li key={book.id}>
+						<li className="col-lg-4 col-md-6 col-12" key={book.id}>
 							<BookListItem book={book} />
 						</li>
 					);
