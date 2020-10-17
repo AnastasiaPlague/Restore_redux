@@ -20,7 +20,7 @@ const ShoppingCartTable = () => {
 						<td>More Books</td>
 						<td>2</td>
 						<td>$50</td>
-						<td className="d-flex justify-content-between">
+						<td className="d-flex w-75 justify-content-between">
 							<button className="btn btn-outline-danger btn-sm float-right">
 								<i className="fa fa-trash-o" />
 							</button>

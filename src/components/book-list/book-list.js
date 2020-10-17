@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { booksLoaded, booksRequested, booksError } from "../../actions/";
+import { fetchBooks } from "../../actions/";
 import compose from "../../utils/compose";
 import withBookstoreService from "../hoc/withBookstoreService";
 import Spinner from "../spinner/spinner";
@@ -10,21 +10,7 @@ import "./book-list.css";
 
 class BookList extends Component {
 	componentDidMount() {
-		const {
-			bookstoreService,
-			booksLoaded,
-			booksRequested,
-			booksError
-		} = this.props;
-		booksRequested();
-		bookstoreService
-			.getBooks()
-			.then(data => {
-				booksLoaded(data);
-			})
-			.catch(error => {
-				booksError(error);
-			});
+		this.props.fetchBooks();
 	}
 
 	render() {
@@ -58,10 +44,10 @@ const mapStateToProps = ({ books, loading, error }) => {
 	};
 };
 
-const mapDispatchToProps = {
-	booksLoaded,
-	booksRequested,
-	booksError
+const mapDispatchToProps = (dispatch, { bookstoreService }) => {
+	return {
+		fetchBooks: fetchBooks(dispatch, bookstoreService)
+	};
 };
 
 export default compose(
