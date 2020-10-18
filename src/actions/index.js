@@ -59,17 +59,17 @@ const clearedCart = () => {
 	};
 };
 
-const fetchBooksOld = (dispatch, bookstoreService) => () => {
-	dispatch(booksRequested());
-	bookstoreService
-		.getBooks()
-		.then(data => {
-			dispatch(booksLoaded(data));
-		})
-		.catch(error => {
-			dispatch(booksError(error));
-		});
-};
+// const fetchBooksOld = (dispatch, bookstoreService) => () => {
+// 	dispatch(booksRequested());
+// 	bookstoreService
+// 		.getBooks()
+// 		.then(data => {
+// 			dispatch(booksLoaded(data));
+// 		})
+// 		.catch(error => {
+// 			dispatch(booksError(error));
+// 		});
+// };
 
 const fetchBooks = bookstoreService => () => dispatch => {
 	dispatch(booksRequested());
