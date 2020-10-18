@@ -53,6 +53,12 @@ const bookRemovedFromCart = bookId => {
 	};
 };
 
+const clearedCart = () => {
+	return {
+		type: "CLEARED_CART"
+	};
+};
+
 const fetchBooksOld = (dispatch, bookstoreService) => () => {
 	dispatch(booksRequested());
 	bookstoreService
@@ -81,5 +87,6 @@ export {
 	fetchBooks,
 	bookAddedToCart,
 	allBooksRemovedFromCart,
-	bookRemovedFromCart
+	bookRemovedFromCart,
+	clearedCart
 };

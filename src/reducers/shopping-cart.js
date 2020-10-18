@@ -22,6 +22,12 @@ const updateShoppingCart = (state, { type, payload }) => {
 		case "UPDATE_ORDER_TOTAL":
 			return updateTotal(state);
 
+		case "CLEARED_CART":
+			return {
+				cartItems: [],
+				orderTotal: 0
+			};
+
 		default:
 			return state.shoppingCart;
 	}
