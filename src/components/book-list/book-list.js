@@ -1,4 +1,5 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { bookAddedToCart } from "../../actions/";
 import BookListItem from "../book-list-item/book-list-item";
 import { connect } from "react-redux";
@@ -21,9 +22,12 @@ const BookList = ({ books, onAddedToCart }) => {
 };
 
 const mapDispatchToProps = dispatch => {
-	return {
-		onAddedToCart: id => dispatch(bookAddedToCart(id))
-	};
+	return bindActionCreators(
+		{
+			onAddedToCart: bookAddedToCart
+		},
+		dispatch
+	);
 };
 
 export default connect(null, mapDispatchToProps)(BookList);

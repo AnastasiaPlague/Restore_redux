@@ -1,4 +1,5 @@
 const updateShoppingCart = (state, { type, payload }) => {
+	console.log(type);
 	if (state === undefined) {
 		return {
 			cartItems: [],
@@ -8,18 +9,32 @@ const updateShoppingCart = (state, { type, payload }) => {
 	switch (type) {
 		case "BOOK_ADDED_TO_CART":
 			return updateOrder(state, payload, 1);
+
 		case "ALL_BOOKS_REMOVED_FROM_CART":
 			const item = state.shoppingCart.cartItems.find(
 				({ id }) => id === payload
 			);
 			return updateOrder(state, payload, -item.count);
+
 		case "BOOK_REMOVED_FROM_CART":
-			console.log(payload);
 			return updateOrder(state, payload, -1);
+
+		case "UPDATE_ORDER_TOTAL":
+			return updateTotal(state);
 
 		default:
 			return state.shoppingCart;
 	}
+};
+
+const updateTotal = state => {
+	const { cartItems, orderTotal } = state.shoppingCart;
+	return {
+		...state.shoppingCart,
+		orderTotal: cartItems.reduce((acc, currentValue) => {
+			return acc + currentValue.total;
+		}, orderTotal)
+	};
 };
 
 const updateCartItem = (book, item = {}, quantity) => {
@@ -44,8 +59,8 @@ const updateOrder = (state, bookId, quantity) => {
 	const newItem = updateCartItem(book, item, quantity);
 
 	return {
-		orderTotal: 0,
-		cartItems: updateCartItems(cartItems, newItem, itemIndex)
+		cartItems: updateCartItems(cartItems, newItem, itemIndex),
+		orderTotal: 0
 	};
 };
 
