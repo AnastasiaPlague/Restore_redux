@@ -1,5 +1,4 @@
 const updateShoppingCart = (state, { type, payload }) => {
-	console.log(type);
 	if (state === undefined) {
 		return {
 			cartItems: [],
